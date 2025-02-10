@@ -1,0 +1,3 @@
+[submodule "Kokoro-FastAPI"]
+	path = Kokoro-FastAPI
+	url = https://github.com/remsky/Kokoro-FastAPI
