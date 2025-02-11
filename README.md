@@ -1,112 +1,95 @@
 # Gary Voice: Real-Time AI Voice Platform
 
-A powerful voice AI platform that combines LiveKit's real-time communication, Groq's AI processing, and Kokoro's OpenAI-compatible API. This project consists of three main components that work together to create a seamless voice AI experience.
-
-## Project Structure 📁
-
-```
-.
-├── GaryVoiceDemo/          # LiveKit Cloud integration & Groq agent
-├── Kokoro-FastAPI/         # OpenAI-compatible API server
-└── GaryVoiceFrontend/     # Next.js frontend for LiveKit demo
-```
+A powerful voice AI platform combining LiveKit's real-time communication, Groq's AI processing, and Kokoro's text-to-speech API. Build production-ready voice agents in minutes.
 
 ## Quick Start Guide 🚀
 
-You'll need to run three separate instances:
-1. Kokoro FastAPI server
-2. LiveKit agent
-3. Frontend demo
-
 ### Prerequisites 📋
-
 - Docker Engine 24.0+
 - Python 3.9+
 - Node.js & pnpm
 - LiveKit Cloud account
 - Groq API key
 
-## Component Setup Instructions 🔧
+## Setup Instructions 🔧
 
-### 1. Kokoro FastAPI Server
-
-Choose one of these options:
-
-**Option A: Using Pre-built Docker Image (Recommended)**
+### 1. Clone the Repository
 ```bash
-# For CPU
+git clone https://github.com/ArkMaster123/GaryVoiceKokoro.git
+cd GaryVoiceKokoro
+```
+
+### 2. Start Kokoro TTS Server
+```bash
+# Run the pre-built Docker image (CPU version)
 docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.1
 
-# For NVIDIA GPU
+# For NVIDIA GPU support, use:
 docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:v0.2.1
 ```
 
-**Option B: Building Locally**
-```bash
-cd Kokoro-FastAPI/docker/cpu
-docker compose up --build
-```
-
-### 2. LiveKit Agent Setup
-
-Navigate to the GaryVoiceDemo directory:
+### 3. Set Up LiveKit Agent
 ```bash
 cd GaryVoiceDemo
 python3 -m venv venv
 source venv/bin/activate
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
+```
+
+Create `.env.local`:
+```env
+LIVEKIT_API_KEY=your_api_key
+LIVEKIT_API_SECRET=your_api_secret
+LIVEKIT_URL=wss://your-project.livekit.cloud
+GROQ_API_KEY=your_groq_api_key
+```
+
+Start the agent:
+```bash
 python3 agent.py dev
 ```
 
-Required environment variables (`.env.local`):
-```ini
-LIVEKIT_API_KEY=<your_api_key>
-LIVEKIT_API_SECRET=<your_api_secret>
-LIVEKIT_URL=wss://<project-subdomain>.livekit.cloud
-```
-
-### 3. Frontend Setup
-
-Navigate to the GaryVoiceFrontend directory:
+### 4. Launch the Frontend
 ```bash
 cd GaryVoiceFrontend
 pnpm install
+```
+
+Create another `.env.local`:
+```env
+LIVEKIT_API_KEY=your_api_key
+LIVEKIT_API_SECRET=your_api_secret
+LIVEKIT_URL=wss://your-project.livekit.cloud
+GROQ_API_KEY=your_groq_api_key
+```
+
+Start the frontend:
+```bash
 pnpm dev
 ```
 
-Access the demo at: http://localhost:3000
+Visit http://localhost:3000 to see your voice agent in action!
 
-## Environment Setup 🔐
+## Port Configuration 🔌
+- Kokoro TTS: http://localhost:8880
+- LiveKit Agent: http://localhost:7880
+- Frontend: http://localhost:3000
 
-### LiveKit Cloud Setup
-1. Sign up for LiveKit Cloud
-2. Create a new project
-3. Copy your API credentials
-4. Set up your environment variables as shown above
+## Need Help? 🤝
+Email questions to: bornandbrand@gmail.com
 
-## Ports Used 🔌
-
-| Component        | Port | URL                      |
-|-----------------|------|--------------------------|
-| Kokoro FastAPI  | 8880 | http://localhost:8880    |
-| LiveKit Agent   | 7880 | http://localhost:7880    |
-| Frontend        | 3000 | http://localhost:3000    |
+## Resources 📚
+- [LiveKit Cloud](https://cloud.livekit.io)
+- [Groq Console](https://console.groq.com)
 
 ## Troubleshooting 🔍
+- Ensure all services are running simultaneously
+- Verify your API credentials
+- Check port availability
+- Confirm Docker is running
 
-- Ensure all three components are running simultaneously
-- Verify your LiveKit Cloud credentials are correct
-- Check that ports 8880, 7880, and 3000 are available
-- Make sure Docker is running for Kokoro FastAPI
-
-## Additional Resources 📚
-
-- [LiveKit Cloud Dashboard](https://cloud.livekit.io)
-- [Kokoro FastAPI Documentation](https://github.com/remsky/Kokoro-FastAPI)
-- [Groq API Documentation](https://console.groq.com/docs)
-
-MAKE SURE TO create 2 separate NEW .env.local in GaryVoiceDemo/  AND GaryVoiceFrontend/  with the following credentials:
-LIVEKIT_URL=<your LiveKit server URL>
-LIVEKIT_API_KEY=<your API Key>
-LIVEKIT_API_SECRET=<your API Secret>
-GROQ_API_KEY=<your API Secret>
+Would you like me to:
+1. Add more detailed troubleshooting steps?
+2. Include architecture diagrams?
+3. Expand the setup instructions?
+4. Add configuration options?
