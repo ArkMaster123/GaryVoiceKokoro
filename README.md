@@ -105,11 +105,8 @@ Access the demo at: http://localhost:3000
 - [Kokoro FastAPI Documentation](https://github.com/remsky/Kokoro-FastAPI)
 - [Groq API Documentation](https://console.groq.com/docs)
 
-## License 📄
-
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
-
----
-
-Need help? Open an issue in the respective repository for specific component-related questions.
-
+MAKE SURE TO create 2 separate NEW .env.local in GaryVoiceDemo/  AND GaryVoiceFrontend/  with the following credentials:
+LIVEKIT_URL=<your LiveKit server URL>
+LIVEKIT_API_KEY=<your API Key>
+LIVEKIT_API_SECRET=<your API Secret>
+GROQ_API_KEY=<your API Secret>
